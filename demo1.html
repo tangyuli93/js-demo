@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>test1</title>
+    <style>
+        #outer {
+            margin: 0 auto;
+            text-align: center;
+            width: 600px;
+        }
+
+        #div1 {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="outer">
+        <input type="button" value="变宽">
+        <input type="button" value="变高">
+        <input type="button" value="变色">
+        <input type="button" value="隐藏">
+        <input type="button" value="重置">
+        <div id="div1"></div>
+    </div>
+    <script>
+        var attr = ["width", "height", "background-color", "display", "display"];
+        var val = ["200px", "200px", "yellow", "none", "block"];
+        var btns = document.getElementsByTagName("input");
+        var blk = document.getElementById("div1");
+        for (var i = 0; i < btns.length; i++) {
+            // 给每个button添加一个index属性
+            btns[i].index = i;
+            btns[i].onclick = function () {
+                // 如果点击了重置按钮：清除之前的样式
+                if (this.index == 4) {
+                    blk.style = "";
+                }
+                // 以追加形式添加样式
+                blk.style[attr[this.index]] = val[this.index];
+            };
+        }
+    </script>
+</body>
+
+</html>
