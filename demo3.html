@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>函数接收参数并弹出</title>
+    <style>
+        input {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <input id="text1" type="text" placeholder="请输入省">
+        <input id="text2" type="text" placeholder="请输入市">
+        <input id="btn" type="button" value="传参">
+    </div>
+
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            alert(text1.value);
+            alert(text2.value);
+        };
+    </script>
+</body>
+
+</html>
