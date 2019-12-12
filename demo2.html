@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>demo2</title>
+    <style>
+        body {
+            background-color: rgb(202, 199, 193);
+        }
+
+        #outer {
+            width: 500px;
+            margin: 0 auto;
+
+        }
+
+        ul {
+            overflow: hidden;
+        }
+
+        li {
+            list-style-type: none;
+            float: left;
+        }
+
+        #picker li {
+            width: 6px;
+            height: 6px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #red {
+            background: red;
+            border: 5px solid red;
+        }
+
+        #green {
+            background: green;
+            border: 5px solid green;
+        }
+
+        #black {
+            background: black;
+            border: 5px solid black;
+        }
+
+        #nav li {
+            width: 50px;
+            text-align: center;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid white;
+            border-right: 0px;
+        }
+
+        #nav li:last-child {
+            border-right: 1px solid white;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a:hover {
+            color: rgb(121, 130, 207);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="outer">
+        <ul id="picker">
+            <li id="red"></li>
+            <li id="green"></li>
+            <li id="black"></li>
+        </ul>
+        <ul id="nav">
+            <li><a href="javascript:void(0);">新闻</a></li>
+            <li><a href="javascript:void(0);">娱乐</a></li>
+            <li><a href="javascript:void(0);">体育</a></li>
+            <li><a href="javascript:void(0);">电影</a></li>
+            <li><a href="javascript:void(0);">音乐</a></li>
+            <li><a href="javascript:void(0);">旅游</a></li>
+        </ul>
+    </div>
+
+    <script>
+        var red = document.getElementById("red");
+        var green = document.getElementById("green");
+        var black = document.getElementById("black");
+        var body = document.getElementsByTagName("body")[0];
+        var navs = document.getElementById("nav").getElementsByTagName("li");
+        red.onclick = function () {
+            // 修改选择框的样式
+            this.style["background-color"] = "white";
+            this.style["border"] = "5px solid red";
+            // 修改body背景色
+            body.style["background-color"] = "rgb(163, 62, 62)";
+            // 修改导航栏边框样式
+            for (var i = 0; i < navs.length; i++) {
+                navs[i].style["border-color"] = "red";
+            }
+        };
+        green.onclick = function () {
+            this.style["background-color"] = "white";
+            this.style["border"] = "5px solid green";
+            body.style["background-color"] = "rgb(13, 182, 7)";
+            for (var i = 0; i < navs.length; i++) {
+                navs[i].style["border-color"] = "green";
+            }
+        };
+        black.onclick = function () {
+            this.style["background-color"] = "white";
+            this.style["border"] = "5px solid black";
+            body.style["background-color"] = "rgb(83, 82, 82)";
+            for (var i = 0; i < navs.length; i++) {
+                navs[i].style["border-color"] = "black";
+            }
+        };
+    </script>
+</body>
+
+</html>
