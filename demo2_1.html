@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>百度输入法</title>
+    <style>
+        #outer {
+            text-align: center;
+            width: 100px;
+            margin: 0 auto;
+        }
+
+        #btn {
+            cursor: pointer;
+        }
+
+        ul {
+            border: 1px solid rgb(86, 86, 243);
+            width: 80px;
+            padding: 0;
+            margin: 10px auto;
+            display: none;
+        }
+
+        li {
+            list-style-type: none;
+            font-size: 10px;
+            height: 15px;
+            line-height: 15px;
+            padding: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: rgb(133, 133, 150);
+        }
+
+        li:last-child {
+            border-top: 1px solid rgb(86, 86, 243);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <input id="btn" type="button" value="输入法" />
+        <ul>
+            <li>手写</li>
+            <li>拼写</li>
+            <li id="close">关闭</li>
+        </ul>
+    </div>
+    <script>
+        var btn = document.getElementById("btn");
+        var ul = document.getElementsByTagName("ul")[0];
+        var close = document.getElementsByTagName("li")[2];
+
+        // 按钮点击事件
+        btn.onclick = function () {
+            ul.style.display = ul.style.display == "block" ? "none" : "block";
+        }
+
+        // 点击关闭
+        close.onclick = function () {
+            ul.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

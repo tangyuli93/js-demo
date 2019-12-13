@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>求出数组中所有数的和</title>
+    <style>
+        #outer {
+            width: 500px;
+            margin: 10px auto;
+        }
+
+        #btn {
+            margin-top: 10px;
+        }
+
+        label {
+            font-weight: lighter;
+            font-size: 12px;
+        }
+
+        #result {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <input id="nums" type="text">
+        <label for="nums">输入数字求和，数字之间用半角","分隔</label><br />
+        <input id="btn" type="button" value="求和" />
+        <strong id="result"></strong>
+    </div>
+    <script>
+        var btn = document.getElementById("btn");
+        var result = document.getElementById("result");
+
+        btn.onclick = function () {
+            var nums = document.getElementById("nums").value.split(",");
+            var total = 0;
+            for (var i = 0; i < nums.length; i++) {
+                total += parseInt(nums[i]);
+            }
+            result.innerText = total;
+        }
+    </script>
+</body>
+
+</html>

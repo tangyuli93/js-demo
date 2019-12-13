@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>改变div属性</title>
+    <style>
+        input {
+            margin: 5px;
+        }
+
+        #outer {
+            text-align: center;
+        }
+
+        #text {
+            margin: 10px auto;
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <label>属性名：<input id="propName" type="text" value="background" /></label><br />
+        <label>属性值：<input id="propValue" type="text" value="red" /></label><br />
+        <input id="comfirmBtn" type="button" value="确定" />
+        <input id="resetBtn" type="button" value="重置" />
+        <div id="text">在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。</div>
+    </div>
+    <script>
+        var confirmBtn = document.getElementById("comfirmBtn");
+        var resetBtn = document.getElementById("resetBtn");
+        var text = document.getElementById("text");
+        confirmBtn.onclick = function () {
+            var propName = document.getElementById("propName").value;
+            var propValue = document.getElementById("propValue").value;
+            text.style[propName] = propValue;
+        };
+        resetBtn.onclick = function () {
+            text.removeAttribute("style");
+            /*
+                或者 text.style = "";
+            */
+        }
+
+    </script>
+</body>
+
+</html>
