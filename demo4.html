@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>用循环将3个div显示为红色</title>
+    <style>
+        #outer {
+            text-align: center;
+        }
+
+        #blocks {
+            margin-top: 20px;
+        }
+
+        #blocks div {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            background-color: black;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <input id="btn" type="button" value="点击将DIV变成红色">
+        <div id="blocks">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script>
+        var btn = document.getElementById("btn");
+        var blks = document.getElementById("blocks").getElementsByTagName("div");
+        btn.onclick = function () {
+            for (var i = 0; i < blks.length; i++) {
+                blks[i].style["background-color"] = "red";
+            }
+        };
+    </script>
+</body>
+
+</html>

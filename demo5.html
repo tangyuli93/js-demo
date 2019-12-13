@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移动改变样式</title>
+    <style>
+        #blk {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .style1 {
+            background-color: black;
+            border: 25px solid black;
+        }
+
+        .style2 {
+            background-color: #d3ecd1;
+            border: 25px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="blk" class="style1"></div>
+    <script>
+        var blk = document.getElementById("blk");
+        blk.onmouseover = function () {
+            blk.classList.add("style2");
+        };
+        blk.onmouseout = function () {
+            blk.classList.remove("style2");
+        };
+    </script>
+</body>
+
+</html>
