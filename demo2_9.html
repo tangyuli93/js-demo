@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>播放列表收缩展开</title>
+    <style>
+        #outer {
+            margin: 10px auto;
+            width: 240px;
+            border: 1px solid grey;
+        }
+
+        h1 {
+            border-bottom: 1px solid grey;
+            font-size: 16px;
+            padding: 5px 10px;
+            margin: 0;
+            cursor: pointer;
+            background-color: rgb(223, 217, 217);
+            background-image: url(img/ico.gif);
+            background-position: 200px 15px;
+            background-repeat: no-repeat;
+
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 0;
+        }
+
+        li {
+            font-size: 12px;
+            list-style: none;
+            padding: 5px 0;
+            padding-left: 10px;
+            cursor: pointer;
+            background-color: rgb(247, 238, 238);
+        }
+
+        li:hover {
+            background-color: white;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .back {
+            background-position: 200px -15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <h1>播放列表...</h1>
+        <ul>
+            <li>玩家之徒 - 蔡依林</li>
+            <li>原谅我就是这样的女生 - 戴佩妮</li>
+            <li>猜不透 - 丁当</li>
+            <li>自导自演 - 周杰伦</li>
+            <li>浪漫窝 - 弦子</li>
+            <li>流年 - 王菲</li>
+        </ul>
+    </div>
+    <script>
+        var btn = document.getElementsByTagName("h1")[0];
+        var ul = document.getElementsByTagName("ul")[0];
+        btn.onclick = function () {
+            if (!ul.classList.contains("hide")) {
+                ul.classList.add("hide");
+                this.classList.add("back");
+
+            } else {
+                ul.classList.remove("hide");
+                this.classList.remove("back");
+            }
+
+        }
+    </script>
+</body>
+
+</html>

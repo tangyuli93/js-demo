@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片列表</title>
+    <style>
+        #imgList {
+            border: 1px solid black;
+            padding: 10px;
+            width: 720px;
+            margin: 10px auto;
+        }
+
+        li {
+            list-style: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        img {
+            width: 128px;
+            height: 128px;
+            border: 1px solid gray;
+            cursor: crosshair;
+            opacity: 0.3;
+        }
+
+        .class1 {
+            opacity: 1.0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="imgList">
+        <li><img src="img/1.jpg" /></li>
+        <li><img src="img/2.jpg" /></li>
+        <li><img src="img/3.jpg" /></li>
+        <li><img src="img/4.jpg" /></li>
+        <li><img src="img/5.jpg" /></li>
+        <li><img src="img/6.jpg" /></li>
+        <li><img src="img/7.jpg" /></li>
+        <li><img src="img/8.jpg" /></li>
+        <li><img src="img/9.jpg" /></li>
+        <li><img src="img/10.jpg" /></li>
+    </ul>
+    <script>
+        var imgs = document.getElementsByTagName("img");
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onmouseover = function () {
+                this.classList.add("class1");
+            };
+            imgs[i].onmouseout = function () {
+                this.classList.remove("class1");
+            };
+        }
+    </script>
+</body>
+
+</html>
