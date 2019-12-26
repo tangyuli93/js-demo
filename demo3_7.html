@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网页计算器</title>
+    <style>
+        #calc {
+            width: 300px;
+            margin: 10px auto;
+            position: relative;
+        }
+
+        p,
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        p {
+            color: white;
+            background-color: rgb(26, 19, 19);
+            font-size: 10px;
+            height: 20px;
+            text-align: right;
+            padding-right: 5px;
+        }
+
+        .f-text {
+            display: block;
+            height: 80px;
+            width: 290px;
+            border: none;
+            outline: none;
+            background-image: url(img/inputBg.jpg);
+            text-align: right;
+            font-size: 40px;
+            padding-right: 10px;
+            font-weight: bold;
+            color: black;
+        }
+
+        ul {
+            background-image: url(img/bg.jpg);
+            overflow: hidden;
+            position: relative;
+            padding-left: 2px;
+        }
+
+        li {
+            width: 64px;
+            height: 40px;
+            line-height: 35px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            float: left;
+            margin: 10px 5px;
+            background-image: url(img/btn.png);
+            background-repeat: no-repeat;
+        }
+
+        li:hover {
+            background-image: url(img/btn.png);
+            background-position: -64px 0;
+        }
+
+        .btn-1 {
+            background-image: url(img/btn.png);
+            background-position: 0 -40px;
+        }
+
+        .btn-1:hover {
+            background-image: url(img/btn.png);
+            background-position: -64px -40px;
+        }
+
+        .btn-2 {
+            background-image: url(img/btn.png);
+            background-position: 0 -163px;
+            height: 99px;
+            line-height: 99px;
+            position: absolute;
+            top: 180px;
+            right: 0;
+        }
+
+        .btn-2:hover {
+            background-image: url(img/btn.png);
+            background-position: -63px -163px;
+        }
+
+        .btn-3 {
+            background-image: url(img/btn.png);
+            background-position: 0 -81px;
+            width: 136px;
+        }
+
+        .btn-3:hover {
+            background-image: url(img/btn.png);
+            background-position: 0 -122px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #formula {
+            position: absolute;
+            top: 20px;
+            background: none;
+            border: 0;
+            outline: none;
+            font: 700 12px/1.5 Arial;
+            width: 280px;
+            padding: 3px 15px 0 5px;
+            text-align: right;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="calc">
+        <p>By: Charles Tang</p>
+        <input class="f-text" type="text" readonly="readonly" maxlength="9" value="0" />
+        <ul>
+            <li class="btn-1">c</li>
+            <li class="btn-1">%</li>
+            <li class="btn-1">÷</li>
+            <li class="btn-1">×</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li class="btn-1">-</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li class="btn-1">+</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li class="btn-2">=</li>
+            <li class="btn-3">0</li>
+            <li>.</li>
+        </ul>
+        <input id="formula" type="text" readonly="readonly" value="" />
+    </div>
+
+    <script>
+        var keys = document.getElementsByTagName("li");
+        var text = document.getElementsByClassName("f-text")[0];
+        var formula = document.getElementById("formula");
+
+        var isOperator = function (value) {
+            var arr = ['+', '-', '*', '/', '%'];
+            return arr.indexOf(value) > -1;
+        }
+
+        var operate = function (oper) {
+            // 如果已有操作符则替换
+            if (isOperator(text.value.substr(-1))) {
+                text.value = oper;
+                return;
+            }
+            if (flag) {
+                formula.value = text.value;
+                text.value = oper;
+                flag = false;
+                return;
+            }
+
+            formula.value += text.value;
+            text.value = oper;
+        };
+
+        var flag = false;
+        var compute = function () {
+            if (flag) return;
+            formula.value += text.value;
+            text.value = eval(formula.value);
+            flag = true;
+        }
+
+        for (var i = 0; i < keys.length; i++) {
+            keys[i].onclick = function () {
+                var val = this.innerText;
+                switch (val) {
+                    case 'c': {
+                        formula.value = "";
+                        text.value = "0";
+                        break;
+                    };
+                    case '.': {
+                        if (text.value.substr(-1) != '.') {
+                            text.value += ".";
+                        }
+                        break;
+                    }
+                    case '×': {
+                        operate("*");
+                        break;
+                    };
+                    case '÷': {
+                        operate("/");
+                        break;
+                    };
+                    case '+': {
+                        operate("+");
+                        break;
+                    }
+                    case '-': {
+                        operate("-");
+                        break;
+                    }
+                    case '%': {
+                        operate("%");
+                        break;
+                    }
+                    case '=': {
+                        compute();
+                        break;
+                    }
+                    default: {
+                        if (flag) {
+                            text.value = val;
+                            formula.value = "";
+                            flag = false;
+                            return;
+                        }
+                        if (text.value == "0")
+                            text.value = "";
+                        text.value += val;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

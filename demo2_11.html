@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鼠标移过，改变图片路径</title>
+    <style>
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        #box {
+            width: 208px;
+            margin: 10px auto;
+        }
+
+        ul {
+            border: 8px solid white;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+            width: 50px;
+            height: 50px;
+            border-radius: 20px;
+            border: 1px solid white;
+        }
+
+        .first {
+            width: 154px;
+            height: 154px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box">
+        <li class="first"><img src="img/big_1.jpg"></li>
+        <li><a href="javascript:;"><img src="img/small_1.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_2.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_3.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_4.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_5.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_6.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_7.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_8.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_9.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_10.jpg"></a></li>
+        <li><a href="javascript:;"><img src="img/small_11.jpg"></a></li>
+    </ul>
+    <script>
+        var firstImg = document.getElementsByClassName("first")[0].getElementsByTagName("img")[0];
+        var lis = document.getElementsByTagName("li");
+        // 从第2个li标签开始
+        console.log(lis.length);
+        for (var i = 1; i < lis.length; i++) {
+            lis[i].ind = i;
+            lis[i].onmouseover = function () {
+                firstImg.src = "img/big_" + this.ind + ".jpg";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

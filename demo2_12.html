@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>复选框全选</title>
+    <style>
+        body {
+            font-size: 14px;
+        }
+
+        dl,
+        dt,
+        dd {
+            margin: 0;
+            padding: 0;
+        }
+
+        dl {
+            margin: 10px auto;
+            width: 150px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        dt {
+            border-bottom: 1px solid black;
+            padding: 10px;
+        }
+
+        dd {
+            padding-left: 10px;
+        }
+
+        #checkAll label {
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            margin-left: 10px;
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <dl>
+        <dt><input type="checkbox" id="checkAll" /><label>全选</label><a href="javascript:;">反选</a></dt>
+        <dd>
+            <p><input type="checkbox" name="item" /><label>选项（一）</label></p>
+            <p><input type="checkbox" name="item" /><label>选项（二）</label></p>
+            <p><input type="checkbox" name="item" /><label>选项（三）</label></p>
+            <p><input type="checkbox" name="item" /><label>选项（四）</label></p>
+            <p><input type="checkbox" name="item" /><label>选项（五）</label></p>
+            <p><input type="checkbox" name="item" /><label>选项（六）</label></p>
+            <p><input type="checkbox" name="item" /><label>选项（七）</label></p>
+            <p><input type="checkbox" name="item" /><label>选项（八）</label></p>
+            <p><input type="checkbox" name="item" /><label>选项（九）</label></p>
+            <p><input type="checkbox" name="item" /><label>选项（十）</label></p>
+        </dd>
+    </dl>
+    <center>1、切换全选/全不选文字；2、根据选中个数更新全选框状态；</center>
+
+    <script>
+        var num = 0;
+        var checkAll = document.getElementById("checkAll");
+        var checks = document.getElementsByName("item");
+        var reversecheck = document.getElementsByTagName("a")[0];
+        // 全选框事件
+        checkAll.onclick = function () {
+            for (var i = 0; i < checks.length; i++) {
+                if (this.checked) {
+                    num = checks.length;
+                }
+                checks[i].checked = this.checked;
+            }
+        }
+        // 全选后，全选框选中
+        for (var i = 0; i < checks.length; i++) {
+            checks[i].onclick = function () {
+                num = this.checked ? num + 1 : num - 1;
+                checkAll.checked = num == checks.length ? "checked" : "";
+            }
+        }
+        // 反选事件
+        reversecheck.onclick = function () {
+            for (var i = 0; i < checks.length; i++) {
+                if (checks[i].checked) {
+                    checks[i].checked = "";
+                    num--;
+                } else {
+                    checks[i].checked = "checked";
+                    num++;
+                }
+                checkAll.checked = num == checks.length ? "checked" : "";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

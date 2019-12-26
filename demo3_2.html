@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用parseInt解析数字，并求和</title>
+    <style>
+        #outer {
+            text-align: center;
+        }
+
+        #first,
+        #last {
+            width: 60px;
+            height: 20px;
+            background-color: rgb(231, 225, 225);
+        }
+
+        label {
+            display: inline-block;
+            width: 40px;
+        }
+
+        #btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <input id="first" type="text" class="val" /> + <input id="last" type="text" class="val" /> =
+        <label>?</label><br />
+        <input id="btn" type="button" value="求和">
+    </div>
+
+    <script>
+        var btn = document.getElementById("btn");
+        var vals = document.getElementsByClassName("val");
+        var first = document.getElementById("first");
+        var last = document.getElementById("last");
+        var label = document.getElementsByTagName("label")[0];
+        // 清除非数字字符
+        for (var i = 0; i < vals.length; i++) {
+            vals[i].onkeyup = function (event) {
+                this.value = this.value.replace(/[^\d]/, "");
+            }
+        }
+
+        // 计算
+        btn.onclick = function () {
+            label.innerText = parseInt(first.value) + parseInt(last.value);
+        }
+
+    </script>
+</body>
+
+</html>

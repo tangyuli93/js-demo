@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断数字是否为两位数</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #val {
+            width: 60px;
+            height: 20px;
+            background-color: rgb(231, 225, 225);
+        }
+    </style>
+</head>
+
+<body>
+    <input id="val" type="text" />
+    <input id="btn" type="button" value="是否位两位数" /><br />
+    <label></label>
+    <script>
+        var btn = document.getElementById("btn");
+        var val = document.getElementById("val");
+        var label = document.getElementsByTagName("label")[0];
+        // 清除非数字字符
+        val.onkeyup = function (event) {
+            this.value = this.value.replace(/[^\d]/, "");
+        };
+        btn.onclick = function () {
+            if (val.value == "") {
+                label.innerText = "请输入数字";
+                return;
+            }
+            var tmp = Math.floor(parseInt(val.value) / 10);
+            if (tmp >= 1 && tmp <= 9) {
+                label.innerText = "Bingo! 2位数！";
+            } else {
+                var count = 0;
+                tmp = parseInt(val.value);
+                while (tmp != 0) {
+                    tmp = Math.floor(tmp / 10);
+                    count++;
+                }
+                label.innerText = "Oops! " + count + "位数！";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

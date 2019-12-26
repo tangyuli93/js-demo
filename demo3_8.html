@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简易网页时钟</title>
+    <style>
+        #outer {
+            width: 200px;
+            height: 60px;
+            padding-top: 30px;
+            text-align: center;
+            background-color: black;
+            color: white;
+            margin: 10px auto;
+        }
+
+        label {
+            background-color: white;
+            width: 30px;
+            margin-right: 5px;
+            display: inline-block;
+            color: black;
+        }
+    </style>
+</head>
+<div id="outer">
+    <label></label>点
+    <label></label>分
+    <label></label>秒
+</div>
+<script>
+    var labels = document.getElementsByTagName("label");
+    var myFormat = function (value) {
+        return value.toString().replace(/^(\d)$/, "0$1");
+    };
+
+    // 赋初始值，防止闪屏
+    var now = new Date();
+    labels[0].innerText = myFormat(now.getHours());
+    labels[1].innerText = myFormat(now.getMinutes());
+    labels[2].innerText = myFormat(now.getSeconds());
+
+
+    setInterval(function () {
+        var now = new Date();
+        labels[0].innerText = myFormat(now.getHours());
+        labels[1].innerText = myFormat(now.getMinutes());
+        labels[2].innerText = myFormat(now.getSeconds());
+    }, 1000);
+</script>
+
+<body>
+
+</body>
+
+</html>
